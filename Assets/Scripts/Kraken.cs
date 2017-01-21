@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Kraken : MonoBehaviour {
@@ -19,9 +20,13 @@ public class Kraken : MonoBehaviour {
 
 	public Sprite[] swimSpites;
 
+	public Image playerPressurePanel;
+	public GameObject explosionParticleSystem;
+
 	private float speed;
 	private float momentum;
 	private float strokePhase;
+	private float pressure;
 
 	private SpriteRenderer spriteRenderer;
 	private AudioSource audioSource;
@@ -32,6 +37,7 @@ public class Kraken : MonoBehaviour {
 	void Start () {
 		strokePhase = 0;
 		momentum = 0;
+		pressure = 0;
 		speed = minSpeed;
 		if (maxSpeed < minSpeed) {
 			maxSpeed = minSpeed;
@@ -88,6 +94,25 @@ public class Kraken : MonoBehaviour {
 				float finalSplashPower = splashPower * Mathf.Clamp01 (2.0f - depth) * 0.2f;
 				sea.Splash (Random.Range (transform.position.x - 0.2f, transform.position.x + 0.2f), finalSplashPower);
 			}
+		}
+
+		if (playerPressurePanel != null) {
+			float depth = sea.GetHeightVelocity (transform.position.x).x - transform.position.y;
+			if (depth < 2.0f) {
+				pressure += 0.4f * Time.deltaTime;
+			} else {
+				pressure -= 0.2f * Time.deltaTime;
+			}
+
+			if (pressure >= 1.0f) {
+				// explode!!
+				Instantiate(explosionParticleSystem, transform.position, transform.rotation);
+				Destroy (this);
+			}
+
+			pressure = Mathf.Clamp01 (pressure);
+			playerPressurePanel.color = Color.Lerp (Color.white, Color.red, pressure);
+
 		}
 	}
 

@@ -145,7 +145,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -180,7 +180,10 @@ MonoBehaviour:
   ForwardAxisName: Vertical
   swimSpites:
   - {fileID: 21300000, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
-  - {fileID: 21300002, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
+  - {fileID: 0}
+  playerPressurePanel: {fileID: 0}
+  explosionParticleSystem: {fileID: 1048613841905990, guid: c080b02fa49344c8ab5ceec826dd0273,
+    type: 2}
 --- !u!212 &212332112107693530
 SpriteRenderer:
   m_ObjectHideFlags: 1
