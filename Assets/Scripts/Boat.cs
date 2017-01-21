@@ -6,14 +6,14 @@ public class Boat : MonoBehaviour {
 	public float speed;
 	public int party;
 
-	private StringSimulation sea;
+	private Sea sea;
 	private Rigidbody2D rigidBody;
 	private float randomTimeOffset;
 	private int state = 0;			// 0: floating, 1: sinking
 
 	// Use this for initialization
 	void Start () {
-		sea = FindObjectOfType<StringSimulation> ();
+		sea = FindObjectOfType<Sea> ();
 		rigidBody = GetComponent<Rigidbody2D> ();
 		randomTimeOffset = Random.Range (0.0f, Mathf.PI * 2.0f);
 	}
@@ -69,7 +69,7 @@ public class Boat : MonoBehaviour {
 
 		} else if (state == 1) {	// sinking ship
 			transform.Translate (new Vector3 (0.0f, -0.5f * Time.fixedDeltaTime, 0.0f), Space.World);
-			if (transform.position.y < -5.0f) {
+			if (transform.position.y < -7.0f) {
 				state = 2;
 			}
 		} else if (state == 2) {
