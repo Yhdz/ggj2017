@@ -24,9 +24,10 @@ public class Kraken : MonoBehaviour {
 	private float strokePhase;
 
 	private SpriteRenderer spriteRenderer;
+	private AudioSource audioSource;
+
 	private string makeWavesButtonName;
 	private Sea sea = null;
-	private Rigidbody2D rigidBody;
 
 	void Start () {
 		strokePhase = 0;
@@ -46,6 +47,7 @@ public class Kraken : MonoBehaviour {
 		makeWavesButtonName = "MakeWaves" + playerNumber;
 
 		spriteRenderer = GetComponent<SpriteRenderer> ();
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	void Update () {
@@ -64,6 +66,10 @@ public class Kraken : MonoBehaviour {
 				spriteRenderer.sprite = swimSpites [0];
 			} else {
 				spriteRenderer.sprite = swimSpites [1];
+			}
+
+			if (!audioSource.isPlaying) {
+				audioSource.Play ();
 			}
 		} else if (momentum > 0) {
 			momentum -= Time.deltaTime;
