@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 058dfc1964d974ac78aa2d92a261200d
-timeCreated: 1485009383
+timeCreated: 1485026295
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -69,6 +69,22 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -80,8 +96,8 @@ TextureImporter:
         y: 0
         width: 500
         height: 380
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5031629, y: 0.6831142}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -93,8 +109,8 @@ TextureImporter:
         y: 0
         width: 500
         height: 380
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.503163, y: 0.67895246}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -106,8 +122,8 @@ TextureImporter:
         y: 0
         width: 459
         height: 380
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.48966366, y: 0.6747908}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
