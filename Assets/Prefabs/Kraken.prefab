@@ -169,20 +169,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1164e77d0e44c8c94c79d6daf74052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
-  minSpeed: 0.2
-  maxSpeed: 1
+  playerID: 0
+  minSpeed: 2
+  maxSpeed: 4
   rotSpeed: 100
   strokeFrequency: 6
   sinkingSpeed: 0.5
   splashPower: 0
-  RotAxisName: Horizontal
-  ForwardAxisName: Vertical
-  AttackButtonName: Fire
   swimSpites:
   - {fileID: 21300000, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
   - {fileID: 21300002, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
-  attackSprites: []
+  attackSprites:
+  - {fileID: 21300000, guid: 058dfc1964d974ac78aa2d92a261200d, type: 3}
+  - {fileID: 21300002, guid: 058dfc1964d974ac78aa2d92a261200d, type: 3}
+  - {fileID: 21300004, guid: 058dfc1964d974ac78aa2d92a261200d, type: 3}
   playerPressurePanel: {fileID: 0}
   explosionParticleSystem: {fileID: 1048613841905990, guid: c080b02fa49344c8ab5ceec826dd0273,
     type: 2}

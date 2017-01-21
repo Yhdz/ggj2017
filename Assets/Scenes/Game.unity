@@ -551,8 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_HorizontalAxis: Horizontal0
+  m_VerticalAxis: Vertical0
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -592,6 +592,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: attackSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.36
@@ -842,6 +847,97 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!1001 &1904084552
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: attackSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: ForwardAxisName
+      value: Vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: splashPower
+      value: 0.643
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: minSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 212332112107693530, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 82479046147558446, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: playerPressurePanel
+      value: 
+      objectReference: {fileID: 382646616}
+    - target: {fileID: 1032008648527774, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+      propertyPath: m_Name
+      value: Kraken (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: playerID
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &2008872562
 Prefab:
   m_ObjectHideFlags: 0

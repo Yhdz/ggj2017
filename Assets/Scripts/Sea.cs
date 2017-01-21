@@ -130,15 +130,15 @@ public class Sea : MonoBehaviour {
 			velocities[i] += acceleration;
 		}
 
+		// fix the sidex of the screen
 		velocities [0] = 0.0f;
 		velocities [gridSubdivision-1] = 0.0f;
-		positions [0] = Mathf.PerlinNoise(Time.time * 4.0f, 0.0f) - 0.5f;
-		positions [gridSubdivision-1] = Mathf.PerlinNoise(Time.time * 4.0f, 0.5f) - 0.5f;
-
-		float[] leftDeltas = new float[gridSubdivision];
-		float[] rightDeltas = new float[gridSubdivision];
+		positions [0] = 0.0f;
+		positions [gridSubdivision-1] = 0.0f;
 
 		// do some passes where springs pull on their neighbours
+		float[] leftDeltas = new float[gridSubdivision];
+		float[] rightDeltas = new float[gridSubdivision];
 		for (int j = 0; j < 8; j++)
 		{
 			for (int i = 0; i < gridSubdivision; i++)

@@ -113,16 +113,16 @@ public class Kraken : MonoBehaviour {
 
 			pressure = Mathf.Clamp01 (pressure);
 			Color playerColor = Color.red;
-			if (playerNumber == 1) {
+			if (playerID == 1) {
 				playerColor = Color.blue;
 			}
 				
-			playerPressurePanel.color = Color.Lerp (Color.white, Color.red, pressure);
+			playerPressurePanel.color = Color.Lerp (Color.white, playerColor, pressure);
 
 		}
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
-		Debug.Log ("Hit!");
+		//Debug.Log ("Hit!");
 	}
 }
