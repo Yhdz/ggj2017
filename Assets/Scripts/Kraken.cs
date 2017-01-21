@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class Kraken : MonoBehaviour {
+	public int playerNumber;
 
 	public float minSpeed;
 	public float maxSpeed;
@@ -9,8 +10,12 @@ public class Kraken : MonoBehaviour {
 	public float strokeFrequency;
 	public float sinkingSpeed;
 
+	[Range(0.0f, 1.0f)]
+	public float splashPower;
+
 	public string RotAxisName;
 	public string ForwardAxisName;
+
 
 	public Sprite[] swimSpites;
 
@@ -19,6 +24,8 @@ public class Kraken : MonoBehaviour {
 	private float strokePhase;
 
 	private SpriteRenderer spriteRenderer;
+	private string makeWavesButtonName;
+	private Sea sea = null;
 	private Rigidbody2D rigidBody;
 
 	void Start () {
@@ -34,6 +41,10 @@ public class Kraken : MonoBehaviour {
 		if (RotAxisName == null) {
 			RotAxisName = "Horizontal";
 		}
+		
+		sea = FindObjectOfType<Sea> ();
+		makeWavesButtonName = "MakeWaves" + playerNumber;
+
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 	}
 
@@ -63,6 +74,16 @@ public class Kraken : MonoBehaviour {
 
 		Vector2 sinkingVec = transform.InverseTransformDirection (Vector2.down);
 		transform.Translate (sinkingSpeed * Time.deltaTime * sinkingVec);
+
+		// Make waves (only when under water)
+		if (sea != null) {
+			float depth = sea.GetHeightVelocity (transform.position.x).x - transform.position.y;
+			if (depth > 0.0f && Input.GetButtonDown (makeWavesButtonName)) {
+				Debug.Log ("test");
+				float finalSplashPower = splashPower * Mathf.Clamp01 (2.0f - depth) * 0.2f;
+				sea.Splash (Random.Range (transform.position.x - 0.2f, transform.position.x + 0.2f), finalSplashPower);
+			}
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StringSimulation : MonoBehaviour {
+public class Sea : MonoBehaviour {
 	public int gridSize;
 	public int gridSubdivision;
 
@@ -21,14 +21,19 @@ public class StringSimulation : MonoBehaviour {
 		//StartCoroutine (RandomSpashCoroutine ());
 	}
 
-	public Vector3 GetHeightVelocity(float x)
+	public int GetClosestIndex(float x)
 	{
 		float halfGridSize = gridSize / 2;
 		if (x < -halfGridSize || x > halfGridSize) {
-			return new Vector2 (0.0f, 0.0f);
+			return 0;
 		}
 
-		int closestIndex = Mathf.RoundToInt (((x + halfGridSize) / gridSize) * gridSubdivision);
+		return Mathf.RoundToInt (((x + halfGridSize) / gridSize) * gridSubdivision);
+	}
+
+	public Vector3 GetHeightVelocity(float x)
+	{
+		int closestIndex = GetClosestIndex (x);
 
 		float position0 = positions [closestIndex];
 		float position1 = positions [closestIndex + 1];
@@ -81,6 +86,24 @@ public class StringSimulation : MonoBehaviour {
 
 	public void Splash(int index, float speed)
 	{
+		if (index >= 5 && index < gridSubdivision - 5) {
+			positions [index-5] += speed * 0.01f;
+			positions [index-4] += speed * 0.05f;
+			positions [index-3] += speed * 0.2f;
+			positions [index-2] += speed * 0.5f;
+			positions [index-1] += speed * 0.8f;
+			positions [index-0] += speed;
+			positions [index+1] += speed * 0.8f;
+			positions [index+2] += speed * 0.5f;
+			positions [index+3] += speed * 0.2f;
+			positions [index+4] += speed * 0.05f;
+			positions [index+5] += speed * 0.01f;
+		}
+	}
+
+	public void Splash(float x, float speed)
+	{
+		int index = GetClosestIndex (x);
 		if (index >= 5 && index < gridSubdivision - 5) {
 			positions [index-5] += speed * 0.01f;
 			positions [index-4] += speed * 0.05f;
