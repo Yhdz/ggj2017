@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Kraken : MonoBehaviour {
 	public int playerNumber;
-	public float speed;
+
+	public float minSpeed;
 	public float maxSpeed;
 	public float rotSpeed;
 	public float strokeFrequency;
@@ -18,24 +19,29 @@ public class Kraken : MonoBehaviour {
 
 	public Sprite[] swimSpites;
 
+	private float speed;
 	private float momentum;
 	private float strokePhase;
 
 	private SpriteRenderer spriteRenderer;
 	private string makeWavesButtonName;
 	private Sea sea = null;
+	private Rigidbody2D rigidBody;
 
 	void Start () {
 		strokePhase = 0;
 		momentum = 0;
-
+		speed = minSpeed;
+		if (maxSpeed < minSpeed) {
+			maxSpeed = minSpeed;
+		}
 		if (ForwardAxisName == null) {
 			ForwardAxisName = "Vertical";
 		}
 		if (RotAxisName == null) {
 			RotAxisName = "Horizontal";
 		}
-
+		
 		sea = FindObjectOfType<Sea> ();
 		makeWavesButtonName = "MakeWaves" + playerNumber;
 
@@ -47,10 +53,11 @@ public class Kraken : MonoBehaviour {
 		transform.Rotate (-turn * rotSpeed * Vector3.forward * Time.deltaTime);
 
 		float swim = Input.GetAxis (ForwardAxisName);
-		Vector2 deltaForward = new Vector2();
+		Vector2 deltaForward = new Vector2 ();
 		if (swim > 0) {
 			momentum = swim;
-			deltaForward = momentum * speed * Vector2.up * Time.deltaTime * Mathf.Abs(Mathf.Sin(strokePhase));
+			speed += (maxSpeed - minSpeed) / .1f * Time.deltaTime;
+			deltaForward = momentum * speed * Vector2.up * Time.deltaTime * Mathf.Abs (Mathf.Sin (strokePhase));
 			strokePhase += strokeFrequency * Time.deltaTime;
 
 			if (Mathf.Abs (Mathf.Sin (strokePhase)) < .5f) {
@@ -58,11 +65,10 @@ public class Kraken : MonoBehaviour {
 			} else {
 				spriteRenderer.sprite = swimSpites [1];
 			}
-
 		} else if (momentum > 0) {
 			momentum -= Time.deltaTime;
+			speed = minSpeed;
 			deltaForward = momentum * speed * Vector2.up * Time.deltaTime;
-			// strokePhase = 0;
 		}
 		transform.Translate (deltaForward);
 
@@ -70,11 +76,13 @@ public class Kraken : MonoBehaviour {
 		transform.Translate (sinkingSpeed * Time.deltaTime * sinkingVec);
 
 		// Make waves (only when under water)
-		float depth = sea.GetHeightVelocity (transform.position.x).x - transform.position.y;
-		if (depth > 0.0f && Input.GetButtonDown (makeWavesButtonName)) {
-			Debug.Log ("test");
-			float finalSplashPower = splashPower * Mathf.Clamp01(2.0f - depth) * 0.2f;
-			sea.Splash (Random.Range(transform.position.x - 0.2f, transform.position.x + 0.2f), finalSplashPower);
+		if (sea != null) {
+			float depth = sea.GetHeightVelocity (transform.position.x).x - transform.position.y;
+			if (depth > 0.0f && Input.GetButtonDown (makeWavesButtonName)) {
+				Debug.Log ("test");
+				float finalSplashPower = splashPower * Mathf.Clamp01 (2.0f - depth) * 0.2f;
+				sea.Splash (Random.Range (transform.position.x - 0.2f, transform.position.x + 0.2f), finalSplashPower);
+			}
 		}
 	}
 
