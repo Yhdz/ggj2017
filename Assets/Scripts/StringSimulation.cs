@@ -18,9 +18,10 @@ public class StringSimulation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		CreatePlane ();
+		//StartCoroutine (RandomSpashCoroutine ());
 	}
 
-	public Vector2 GetHeightVelocity(float x)
+	public Vector3 GetHeightVelocity(float x)
 	{
 		float halfGridSize = gridSize / 2;
 		if (x < -halfGridSize || x > halfGridSize) {
@@ -29,7 +30,13 @@ public class StringSimulation : MonoBehaviour {
 
 		int closestIndex = Mathf.RoundToInt (((x + halfGridSize) / gridSize) * gridSubdivision);
 
-		return new Vector2 (positions [closestIndex], velocities [closestIndex]);
+		float position0 = positions [closestIndex];
+		float position1 = positions [closestIndex + 1];
+
+		float gridDist = gridSize / (gridSubdivision - 1.0f);
+		float angle = Mathf.Rad2Deg * Mathf.Atan ((position1 - position0) / gridDist);
+
+		return new Vector3 (positions [closestIndex], velocities [closestIndex], angle);
 	}
 
 	private void CreatePlane() {
@@ -48,7 +55,7 @@ public class StringSimulation : MonoBehaviour {
 		}
 		for (int i = 0; i < gridSubdivision; i++) {
 			float x = -gridSize / 2.0f + (gridSize / (gridSubdivision - 1.0f)) * i;
-			vertices.Add (new Vector3 (x, -5.0f, 0.0f));
+			vertices.Add (new Vector3 (x, -15.0f, 0.0f));
 			uvs.Add (new Vector2 (0.0f, 0.0f));
 		}
 
@@ -74,8 +81,19 @@ public class StringSimulation : MonoBehaviour {
 
 	public void Splash(int index, float speed)
 	{
-		if (index >= 0 && index < gridSubdivision)
-			positions[index] = speed;
+		if (index >= 5 && index < gridSubdivision - 5) {
+			positions [index-5] += speed * 0.01f;
+			positions [index-4] += speed * 0.05f;
+			positions [index-3] += speed * 0.2f;
+			positions [index-2] += speed * 0.5f;
+			positions [index-1] += speed * 0.8f;
+			positions [index-0] += speed;
+			positions [index+1] += speed * 0.8f;
+			positions [index+2] += speed * 0.5f;
+			positions [index+3] += speed * 0.2f;
+			positions [index+4] += speed * 0.05f;
+			positions [index+5] += speed * 0.01f;
+		}
 	}
 
 	public void UpdateSea()
@@ -91,8 +109,8 @@ public class StringSimulation : MonoBehaviour {
 
 		velocities [0] = 0.0f;
 		velocities [gridSubdivision-1] = 0.0f;
-		positions [0] = 0.0f;
-		positions [gridSubdivision-1] = 0.0f;
+		positions [0] = Mathf.PerlinNoise(Time.time * 4.0f, 0.0f) - 0.5f;
+		positions [gridSubdivision-1] = Mathf.PerlinNoise(Time.time * 4.0f, 0.5f) - 0.5f;
 
 		float[] leftDeltas = new float[gridSubdivision];
 		float[] rightDeltas = new float[gridSubdivision];
@@ -133,10 +151,6 @@ public class StringSimulation : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.anyKeyDown) {
-			Splash (Random.Range(10, gridSubdivision - 10), -3);
-		}
-
 		UpdateSea ();
 	}
 }
