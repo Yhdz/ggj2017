@@ -16,9 +16,11 @@ public class Kraken : MonoBehaviour {
 
 	public string RotAxisName;
 	public string ForwardAxisName;
+	public string AttackButtonName;
 
 
 	public Sprite[] swimSpites;
+	public Sprite[] attackSprites;
 
 	public Image playerPressurePanel;
 	public GameObject explosionParticleSystem;
@@ -31,8 +33,9 @@ public class Kraken : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;
 	private AudioSource audioSource;
 
-	private string makeWavesButtonName;
 	private Sea sea = null;
+
+	private int attackSpriteIndex;
 
 	void Start () {
 		strokePhase = 0;
@@ -48,9 +51,11 @@ public class Kraken : MonoBehaviour {
 		if (RotAxisName == null) {
 			RotAxisName = "Horizontal";
 		}
+		if (AttackButtonName == null) {
+			AttackButtonName = "Jump";
+		}
 		
 		sea = FindObjectOfType<Sea> ();
-		makeWavesButtonName = "MakeWaves" + playerNumber;
 
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		audioSource = GetComponent<AudioSource> ();
@@ -90,9 +95,12 @@ public class Kraken : MonoBehaviour {
 		// Make waves (only when under water)
 		if (sea != null) {
 			float depth = sea.GetHeightVelocity (transform.position.x).x - transform.position.y;
-			if (depth > 0.0f && Input.GetButtonDown (makeWavesButtonName)) {
+			if (depth > 0.0f && Input.GetButtonDown (AttackButtonName)) {
 				float finalSplashPower = splashPower * Mathf.Clamp01 (2.0f - depth) * 0.2f;
 				sea.Splash (Random.Range (transform.position.x - 0.2f, transform.position.x + 0.2f), finalSplashPower);
+
+				spriteRenderer.sprite = attackSprites [attackSpriteIndex];
+				attackSpriteIndex = (attackSpriteIndex + 1) % attackSprites.Length;
 			}
 		}
 
