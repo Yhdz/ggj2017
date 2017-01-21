@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 212332112107693530}
   - component: {fileID: 114439417783405030}
   - component: {fileID: 50744966219594396}
-  - component: {fileID: 61618610214719846}
+  - component: {fileID: 58851521998533878}
+  - component: {fileID: 82479046147558446}
   m_Layer: 0
   m_Name: Kraken
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032008648527774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.34, y: -0.255, z: 0}
+  m_LocalPosition: {x: 2.45, y: -1.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,8 +64,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61618610214719846
-BoxCollider2D:
+--- !u!58 &58851521998533878
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,7 +77,87 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Radius: 1
+--- !u!82 &82479046147558446
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032008648527774}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cf9005fa0ae6346cbbe1d030c23a0b46, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114439417783405030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,16 +169,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1164e77d0e44c8c94c79d6daf74052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  maxSpeed: 0
+  playerNumber: 0
+  minSpeed: 3
+  maxSpeed: 4
   rotSpeed: 100
   strokeFrequency: 6
   sinkingSpeed: 0.5
+  splashPower: 0
   RotAxisName: Horizontal
-  ForwardAxisName: Jump
+  ForwardAxisName: Vertical
   swimSpites:
-  - {fileID: 21300000, guid: 22f548f77ce3c47718f5bf6f4643a617, type: 3}
-  - {fileID: 21300002, guid: 22f548f77ce3c47718f5bf6f4643a617, type: 3}
+  - {fileID: 21300000, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
+  - {fileID: 21300002, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
 --- !u!212 &212332112107693530
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -129,7 +212,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 22f548f77ce3c47718f5bf6f4643a617, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
