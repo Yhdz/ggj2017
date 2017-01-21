@@ -175,7 +175,7 @@ MonoBehaviour:
   rotSpeed: 100
   strokeFrequency: 6
   sinkingSpeed: 0.5
-  splashPower: 0.128
+  splashPower: 0.085
   swimSpites:
   - {fileID: 21300000, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
   - {fileID: 21300002, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
@@ -185,6 +185,8 @@ MonoBehaviour:
   - {fileID: 21300004, guid: 058dfc1964d974ac78aa2d92a261200d, type: 3}
   playerPressurePanel: {fileID: 0}
   explosionParticleSystem: {fileID: 1048613841905990, guid: c080b02fa49344c8ab5ceec826dd0273,
+    type: 2}
+  impactPrefab: {fileID: 1974751530051000, guid: 86f2c200bae1f499181bf96a0328a521,
     type: 2}
 --- !u!212 &212332112107693530
 SpriteRenderer:

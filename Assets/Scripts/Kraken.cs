@@ -19,6 +19,7 @@ public class Kraken : MonoBehaviour {
 
 	public Image playerPressurePanel;
 	public GameObject explosionParticleSystem;
+	public GameObject impactPrefab;
 
 	private float speed;
 	private float momentum;
@@ -95,6 +96,9 @@ public class Kraken : MonoBehaviour {
 
 				spriteRenderer.sprite = attackSprites [attackSpriteIndex];
 				attackSpriteIndex = (attackSpriteIndex + 1) % attackSprites.Length;
+
+				GameObject impact = Instantiate (impactPrefab, transform.position, transform.rotation);
+				Destroy (impact, 0.7f);
 			}
 
 			if (Input.GetKeyDown(KeyCode.I)){

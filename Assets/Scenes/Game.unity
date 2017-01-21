@@ -663,11 +663,6 @@ Prefab:
       propertyPath: m_Name
       value: Kraken Player 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
-        type: 2}
-      propertyPath: splashPower
-      value: 0.128
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
   m_IsPrefabParent: 0
@@ -933,11 +928,6 @@ Prefab:
         type: 2}
       propertyPath: playerID
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
-        type: 2}
-      propertyPath: splashPower
-      value: 0.128
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 779a9407803da480a9705fcf462d3caa, type: 2}

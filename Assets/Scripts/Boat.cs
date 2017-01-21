@@ -10,9 +10,11 @@ public class Boat : MonoBehaviour {
 	private Rigidbody2D rigidBody;
 	private float randomTimeOffset;
 	private int state = 0;			// 0: floating, 1: sinking
+	private float damage;
 
 	// Use this for initialization
 	void Start () {
+		damage = 0.0f;
 		sea = FindObjectOfType<Sea> ();
 		rigidBody = GetComponent<Rigidbody2D> ();
 		randomTimeOffset = Random.Range (0.0f, Mathf.PI * 2.0f);
@@ -62,10 +64,9 @@ public class Boat : MonoBehaviour {
 				speed *= -1.0f;
 			}
 
-			if (Mathf.Abs (heightVelocityAngle.y) > 0.01f) {
-				Debug.Log ("Sinking");
-				state = 1;
-			}
+//			if (Mathf.Abs (heightVelocityAngle.y) > 0.01f) {
+//				state = 1;
+//			}
 
 		} else if (state == 1) {	// sinking ship
 			transform.Translate (new Vector3 (0.0f, -0.5f * Time.fixedDeltaTime, 0.0f), Space.World);
@@ -76,9 +77,26 @@ public class Boat : MonoBehaviour {
 			// sunken ship
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		Impact impact = other.GetComponent<Impact> ();
+		if (impact != null) {
+			float distance = Vector2.Distance (other.transform.position, transform.position) / impact.radius;
+			AddDamage ((1.0f - distance) * 0.5f);
+		}
+	}
+
+	public void AddDamage(float d)
+	{
+		damage += d;
+		Debug.Log (damage);
+		if (damage > 1.0f) {
+			state = 1;
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		damage = Mathf.Clamp01(damage - Time.deltaTime);
 	}
 }
