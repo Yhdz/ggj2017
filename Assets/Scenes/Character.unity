@@ -121,13 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1164e77d0e44c8c94c79d6daf74052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  maxSpeed: 0
+  minSpeed: 3
+  maxSpeed: 4
   rotSpeed: 100
   strokeFrequency: 6
   sinkingSpeed: 0.5
   RotAxisName: Horizontal
-  ForwardAxisName: Jump
+  ForwardAxisName: Vertical
   swimSpites:
   - {fileID: 21300000, guid: 22f548f77ce3c47718f5bf6f4643a617, type: 3}
   - {fileID: 21300002, guid: 22f548f77ce3c47718f5bf6f4643a617, type: 3}
@@ -364,13 +364,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1164e77d0e44c8c94c79d6daf74052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  maxSpeed: 0
-  rotSpeed: 0
+  minSpeed: 3
+  maxSpeed: 4
+  rotSpeed: 100
   strokeFrequency: 6
   sinkingSpeed: 0.5
   RotAxisName: Horizontal2
-  ForwardAxisName: Jump2
+  ForwardAxisName: Vertical2
   swimSpites:
   - {fileID: 21300000, guid: 22f548f77ce3c47718f5bf6f4643a617, type: 3}
   - {fileID: 21300002, guid: 22f548f77ce3c47718f5bf6f4643a617, type: 3}
