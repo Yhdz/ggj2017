@@ -663,6 +663,42 @@ Prefab:
       propertyPath: m_Name
       value: Kraken Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: swimSpites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300004, guid: c69ea4d9992404bdeb2359328997e976,
+        type: 3}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: swimSpites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300010, guid: c69ea4d9992404bdeb2359328997e976,
+        type: 3}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: attackSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ef9c9c0f9e50944899045c199f8a14e9,
+        type: 3}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: attackSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300002, guid: ef9c9c0f9e50944899045c199f8a14e9,
+        type: 3}
+    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: attackSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300004, guid: ef9c9c0f9e50944899045c199f8a14e9,
+        type: 3}
+    - target: {fileID: 212332112107693530, guid: 779a9407803da480a9705fcf462d3caa,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ef9c9c0f9e50944899045c199f8a14e9,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
   m_IsPrefabParent: 0
