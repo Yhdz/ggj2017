@@ -79,7 +79,6 @@ public class Kraken : MonoBehaviour {
 		if (sea != null) {
 			float depth = sea.GetHeightVelocity (transform.position.x).x - transform.position.y;
 			if (depth > 0.0f && Input.GetButtonDown (makeWavesButtonName)) {
-				Debug.Log ("test");
 				float finalSplashPower = splashPower * Mathf.Clamp01 (2.0f - depth) * 0.2f;
 				sea.Splash (Random.Range (transform.position.x - 0.2f, transform.position.x + 0.2f), finalSplashPower);
 			}
