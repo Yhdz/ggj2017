@@ -7,8 +7,11 @@ public class Sea : MonoBehaviour {
 	public int gridSubdivision;
 
 	float k = 0.025f;	// Sprint constant (0.025 works well)
-	float d = 0.03f;	// amount of daming (0.05f works well)
-	float spread = 0.01f;	// Spread, between 0 and 0.5
+
+	[Range(0.0f, 0.1f)]
+	public float d = 0.03f;	// amount of daming (0.05f works well)
+	[Range(0.0f, 0.5f)]
+	public float spread = 0.2f;	// Spread, between 0 and 0.5
 
 	private Mesh planeMesh;
 	private List<Vector3> vertices = new List<Vector3> ();
@@ -87,17 +90,17 @@ public class Sea : MonoBehaviour {
 	public void Splash(int index, float speed)
 	{
 		if (index >= 5 && index < gridSubdivision - 5) {
-			positions [index-5] += speed * 0.01f;
-			positions [index-4] += speed * 0.05f;
-			positions [index-3] += speed * 0.2f;
-			positions [index-2] += speed * 0.5f;
-			positions [index-1] += speed * 0.8f;
+			positions [index-5] += speed;
+			positions [index-4] += speed;
+			positions [index-3] += speed;
+			positions [index-2] += speed;
+			positions [index-1] += speed;
 			positions [index-0] += speed;
-			positions [index+1] += speed * 0.8f;
-			positions [index+2] += speed * 0.5f;
-			positions [index+3] += speed * 0.2f;
-			positions [index+4] += speed * 0.05f;
-			positions [index+5] += speed * 0.01f;
+			positions [index+1] += speed;
+			positions [index+2] += speed;
+			positions [index+3] += speed;
+			positions [index+4] += speed;
+			positions [index+5] += speed;
 		}
 	}
 

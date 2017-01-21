@@ -88,12 +88,18 @@ public class Kraken : MonoBehaviour {
 		// Make waves (only when under water)
 		if (sea != null) {
 			float depth = sea.GetHeightVelocity (transform.position.x).x - transform.position.y;
+
 			if (depth > 0.0f && Input.GetButtonDown (AttackButtonName)) {
-				float finalSplashPower = splashPower * Mathf.Clamp01 (2.0f - depth) * 0.2f;
+				float finalSplashPower = splashPower * Mathf.Clamp01 (2.0f - depth) * 5.0f;
 				sea.Splash (Random.Range (transform.position.x - 0.2f, transform.position.x + 0.2f), finalSplashPower);
 
 				spriteRenderer.sprite = attackSprites [attackSpriteIndex];
 				attackSpriteIndex = (attackSpriteIndex + 1) % attackSprites.Length;
+			}
+
+			if (Input.GetKeyDown(KeyCode.I)){
+				float finalSplashPower = splashPower * Mathf.Clamp01 (2.0f - 0.3f) * 5.0f;
+				sea.Splash (Random.Range (transform.position.x - 0.2f, transform.position.x + 0.2f), finalSplashPower);
 			}
 		}
 

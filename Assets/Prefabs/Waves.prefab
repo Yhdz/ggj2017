@@ -93,3 +93,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridSize: 16
   gridSubdivision: 500
+  d: 0.03
+  spread: 0.036
