@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Boat : MonoBehaviour {
 	public float speed;
-	public int party;
+	public int playerID;
+	public Sprite[] sprites;
 
 	private Sea sea;
 	private Rigidbody2D rigidBody;
@@ -18,6 +19,8 @@ public class Boat : MonoBehaviour {
 		sea = FindObjectOfType<Sea> ();
 		rigidBody = GetComponent<Rigidbody2D> ();
 		randomTimeOffset = Random.Range (0.0f, Mathf.PI * 2.0f);
+
+		GetComponent<SpriteRenderer> ().sprite = sprites [playerID];
 	}
 
 	public void SetColor(Color color)
@@ -89,7 +92,6 @@ public class Boat : MonoBehaviour {
 	public void AddDamage(float d)
 	{
 		damage += d;
-		Debug.Log (damage);
 		if (damage > 1.0f) {
 			state = 1;
 		}
