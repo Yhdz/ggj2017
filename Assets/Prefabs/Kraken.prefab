@@ -178,9 +178,11 @@ MonoBehaviour:
   splashPower: 0
   RotAxisName: Horizontal
   ForwardAxisName: Vertical
+  AttackButtonName: Fire
   swimSpites:
   - {fileID: 21300000, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
   - {fileID: 21300002, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
+  attackSprites: []
 --- !u!212 &212332112107693530
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -98,11 +98,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
-        type: 2}
-      propertyPath: attackSpites.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.45
@@ -138,29 +133,6 @@ Prefab:
     - target: {fileID: 1032008648527774, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_Name
       value: Kraken (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
-        type: 2}
-      propertyPath: attackSpites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 058dfc1964d974ac78aa2d92a261200d,
-        type: 3}
-    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
-        type: 2}
-      propertyPath: attackSpites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300002, guid: 058dfc1964d974ac78aa2d92a261200d,
-        type: 3}
-    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
-        type: 2}
-      propertyPath: attackSpites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300004, guid: 058dfc1964d974ac78aa2d92a261200d,
-        type: 3}
-    - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
-        type: 2}
-      propertyPath: AttackButtonName
-      value: Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 779a9407803da480a9705fcf462d3caa, type: 2}

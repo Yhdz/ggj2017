@@ -45,9 +45,11 @@ public class Kraken : MonoBehaviour {
 		if (RotAxisName == null) {
 			RotAxisName = "Horizontal";
 		}
+		if (AttackButtonName == null) {
+			AttackButtonName = "Jump";
+		}
 		
 		sea = FindObjectOfType<Sea> ();
-		AttackButtonName = "MakeWaves" + playerNumber;
 
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		audioSource = GetComponent<AudioSource> ();
