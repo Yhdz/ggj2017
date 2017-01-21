@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Kraken : MonoBehaviour {
-	public int playerNumber;
+	public int playerID;
 
 	public float minSpeed;
 	public float maxSpeed;
@@ -13,17 +13,16 @@ public class Kraken : MonoBehaviour {
 	[Range(0.0f, 1.0f)]
 	public float splashPower;
 
-	public string RotAxisName;
-	public string ForwardAxisName;
-	public string AttackButtonName;
-
-
 	public Sprite[] swimSpites;
 	public Sprite[] attackSprites;
 
 	private float speed;
 	private float momentum;
 	private float strokePhase;
+
+	private string RotAxisName;
+	private string ForwardAxisName;
+	private string AttackButtonName;
 
 	private SpriteRenderer spriteRenderer;
 	private AudioSource audioSource;
@@ -39,16 +38,10 @@ public class Kraken : MonoBehaviour {
 		if (maxSpeed < minSpeed) {
 			maxSpeed = minSpeed;
 		}
-		if (ForwardAxisName == null) {
-			ForwardAxisName = "Vertical";
-		}
-		if (RotAxisName == null) {
-			RotAxisName = "Horizontal";
-		}
-		if (AttackButtonName == null) {
-			AttackButtonName = "Jump";
-		}
-		
+		ForwardAxisName = "Vertical" + playerID;
+		RotAxisName = "Horizontal" + playerID;
+		AttackButtonName = "Jump" + playerID;
+
 		sea = FindObjectOfType<Sea> ();
 
 		spriteRenderer = GetComponent<SpriteRenderer> ();
