@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032008648527774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.36, y: -1.38, z: 0}
+  m_LocalPosition: {x: 2.45, y: -1.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -145,7 +145,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -169,20 +169,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f1164e77d0e44c8c94c79d6daf74052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 0
-  minSpeed: 0.1
-  maxSpeed: 0.3
+  playerNumber: 0
+  minSpeed: 3
+  maxSpeed: 4
   rotSpeed: 100
   strokeFrequency: 6
   sinkingSpeed: 0.5
-  splashPower: 0.643
+  splashPower: 0
+  RotAxisName: Horizontal
+  ForwardAxisName: Vertical
+  AttackButtonName: Fire
   swimSpites:
   - {fileID: 21300000, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
   - {fileID: 21300002, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
-  attackSprites:
-  - {fileID: 21300000, guid: 058dfc1964d974ac78aa2d92a261200d, type: 3}
-  - {fileID: 21300002, guid: 058dfc1964d974ac78aa2d92a261200d, type: 3}
-  - {fileID: 21300004, guid: 058dfc1964d974ac78aa2d92a261200d, type: 3}
+  attackSprites: []
+  playerPressurePanel: {fileID: 0}
+  explosionParticleSystem: {fileID: 1048613841905990, guid: c080b02fa49344c8ab5ceec826dd0273,
+    type: 2}
 --- !u!212 &212332112107693530
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -213,7 +216,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 33
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f3db8dcaf392140c3b8e1b95cb28dda3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
