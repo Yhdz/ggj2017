@@ -21,6 +21,9 @@ public class Kraken : MonoBehaviour {
 	public GameObject explosionParticleSystem;
 	public GameObject impactPrefab;
 
+	public ParticleSystem waterDropParticleSystem;
+	public ParticleSystem bubbleParticleSystem;
+
 	private float speed;
 	private float momentum;
 	private float strokePhase;
@@ -99,6 +102,11 @@ public class Kraken : MonoBehaviour {
 
 				GameObject impact = Instantiate (impactPrefab, transform.position, transform.rotation);
 				Destroy (impact, 0.7f);
+
+				if (depth < 1.0f) {
+					ParticleSystem p = Instantiate<ParticleSystem> (waterDropParticleSystem, new Vector3(transform.position.x, 0.0f, 0.0f), waterDropParticleSystem.transform.rotation);
+					Destroy (p.gameObject, 1.0f);
+				}
 			}
 
 			if (Input.GetKeyDown(KeyCode.I)){

@@ -17,10 +17,12 @@ public class ParticleSpawner : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyDown ("p")) {
-			t = Time.time;
-			if (!waterDropParticleSystem.isPlaying) {
-				waterDropParticleSystem.Play ();
-			}
+			ParticleSystem p = Instantiate<ParticleSystem>(waterDropParticleSystem, transform.position, waterDropParticleSystem.transform.rotation);
+			Destroy (p.gameObject, 1.0f);
+			//t = Time.time;
+			//if (!waterDropParticleSystem.isPlaying) {
+			//	waterDropParticleSystem.Play ();
+			//}
 		}
 		if (Time.time - t > .5f) {
 			waterDropParticleSystem.Stop ();

@@ -188,6 +188,10 @@ MonoBehaviour:
     type: 2}
   impactPrefab: {fileID: 1974751530051000, guid: 86f2c200bae1f499181bf96a0328a521,
     type: 2}
+  waterDropParticleSystem: {fileID: 198056852467835772, guid: baf2f045d999a4d798252875fce9863e,
+    type: 2}
+  bubbleParticleSystem: {fileID: 198941286622470564, guid: 7b6f7d6789b1b427e94995f4c4e3827d,
+    type: 2}
 --- !u!212 &212332112107693530
 SpriteRenderer:
   m_ObjectHideFlags: 1
