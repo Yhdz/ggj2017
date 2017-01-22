@@ -46,7 +46,11 @@ public class BoatSpawner : MonoBehaviour {
 		// TODO: play end sound
 
 		yield return new WaitForSeconds(3.0f);
-		SceneManager.LoadScene("EndScreen");
+		if (numBoatsAlive0 <= 0) {
+			SceneManager.LoadScene ("EndScreen_Purple");
+		} else {
+			SceneManager.LoadScene ("EndScreen_Orange");
+		}
 	}
 	
 	// Update is called once per frame
