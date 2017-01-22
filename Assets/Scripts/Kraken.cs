@@ -196,7 +196,11 @@ public class Kraken : MonoBehaviour {
 		dyingSound.Play ();
 
 		yield return new WaitForSeconds(2.0f);
-		SceneManager.LoadScene("EndScreen");
+		if (playerID == 0) {
+			SceneManager.LoadScene ("EndScreen_Orange");
+		} else {
+			SceneManager.LoadScene ("EndScreen_Purple");
+		}
 	}
 
 	public void AddDamage(float d) {
