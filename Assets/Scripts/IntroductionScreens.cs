@@ -11,10 +11,12 @@ public class IntroductionScreens : MonoBehaviour {
 
 	private int screenIndex = 0;
 
+	private GameObject screenObj;
+
 	// Use this for initialization
 	void Start () {
 		if (screens.Length > 0) {
-			Instantiate(screens[screenIndex++]);
+			screenObj = Instantiate(screens[screenIndex++]);
 		}
 	}
 	
@@ -22,7 +24,8 @@ public class IntroductionScreens : MonoBehaviour {
 	void Update () {
 		if (Input.anyKeyDown) {
 			if (screenIndex < screens.Length) {
-				Instantiate (screens [screenIndex++]);
+				Destroy (screenObj);
+				screenObj = Instantiate (screens [screenIndex++]);
 			} else {
 				SceneManager.LoadScene ("Game");
 			}
