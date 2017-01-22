@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BoatSpawner : MonoBehaviour {
 	public GameObject BoatPrefab;
+
+	int numBoatsAlive0 = 10;
+	int numBoatsAlive1 = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +18,35 @@ public class BoatSpawner : MonoBehaviour {
 				Boat boat = Instantiate (BoatPrefab, new Vector3 (randomPosition, 0.0f, 0.0f), Quaternion.identity).GetComponent<Boat> ();;
 				boat.playerID = player;
 				boat.speed = (Random.Range (0, 2) * 2 - 1) * boat.speed;
+				boat.boatSpawner = this;
 			}
 		}
 
+	}
+
+
+	public void BoatSunk(int playerID)
+	{
+		if (playerID == 0)
+		{
+			numBoatsAlive0--;
+		}
+		if (playerID == 1)
+		{
+			numBoatsAlive1--;
+		}
+
+		if (numBoatsAlive0 <= 0 || numBoatsAlive1 <= 0){
+			StartCoroutine(StartEndSequence());
+		}
+	}
+
+	IEnumerator StartEndSequence()
+	{
+		// TODO: play end sound
+
+		yield return new WaitForSeconds(3.0f);
+		SceneManager.LoadScene("EndScreen");
 	}
 	
 	// Update is called once per frame

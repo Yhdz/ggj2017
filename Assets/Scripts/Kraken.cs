@@ -93,12 +93,6 @@ public class Kraken : MonoBehaviour {
 	}
 
 	void Update () {
-		foreach(KeyCode kcode in System.Enum.GetValues(typeof(KeyCode)))
-		{
-			if (Input.GetKeyDown(kcode))
-				Debug.Log("KeyCode down: " + kcode);
-		}
-
 		float turn = Input.GetAxis (RotAxisName);
 		transform.Rotate (-turn * rotSpeed * Vector3.forward * Time.deltaTime);
 
@@ -192,7 +186,7 @@ public class Kraken : MonoBehaviour {
 	IEnumerator StartDeadSequence() {
 		GetComponent<SpriteRenderer>().enabled = false;
 		Instantiate(explosionParticleSystem, transform.position, transform.rotation);
-		yield return new WaitForSeconds(5.0f);
+		yield return new WaitForSeconds(2.0f);
 		SceneManager.LoadScene("EndScreen");
 	}
 
