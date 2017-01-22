@@ -170,6 +170,10 @@ public class Kraken : MonoBehaviour {
 		}
 	}
 
+	public void AddDamage(float d) {
+		pressure += d;
+	}
+
 	void OnCollisionEnter2D(Collision2D collision) {
 		//Debug.Log ("Hit!");
 	}
