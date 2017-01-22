@@ -196,6 +196,14 @@ public class Kraken : MonoBehaviour {
 		SceneManager.LoadScene("EndScreen");
 	}
 
+	public void AddDamage(float d) {
+		pressure += d;
+		Debug.Log (pressure);
+		if (pressure > 1.0f) {
+			StartCoroutine (StartDeadSequence ());
+		}
+	}
+
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (!beukenSound.isPlaying & momentum > 0) {
 			beukenSound.Play ();
