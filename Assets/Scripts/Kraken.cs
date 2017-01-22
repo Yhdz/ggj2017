@@ -43,6 +43,7 @@ public class Kraken : MonoBehaviour {
 	private AudioSource swimmingSound;
 	private AudioSource dyingSound;
 	private AudioSource beukenSound;
+	private AudioSource splashSound;
 	private AudioSource[] AllAudio;
 		
 
@@ -70,6 +71,7 @@ public class Kraken : MonoBehaviour {
 		swimmingSound = AllAudio[0];
 		beukenSound     = AllAudio[1];
 		dyingSound     = AllAudio[2];
+		splashSound     = AllAudio[3];
 
 		if (playerID == 0) {
 			GetComponent<Rigidbody2D> ().gravityScale = 0.0f;
@@ -162,6 +164,8 @@ public class Kraken : MonoBehaviour {
 				Destroy (impact, 0.7f);
 
 				if (depth < 1.0f) {
+					splashSound.Play ();
+					splashSound.pitch = Random.Range (0.9f, 1.1f);
 					ParticleSystem p = Instantiate<ParticleSystem> (waterDropParticleSystem, new Vector3(transform.position.x, 0.0f, 0.0f), waterDropParticleSystem.transform.rotation);
 					Destroy (p.gameObject, 1.0f);
 				}
