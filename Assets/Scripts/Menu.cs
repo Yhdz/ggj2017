@@ -37,7 +37,7 @@ public class Menu : MonoBehaviour {
 
 	public void OnStartGame()
 	{
-		SceneManager.LoadScene ("Game");
+		SceneManager.LoadScene ("Introscreens");
 	}
 
 	public void OnCredits()
