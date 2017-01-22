@@ -176,9 +176,9 @@ public class Kraken : MonoBehaviour {
 		if (playerPressurePanel != null) {
 			float depth = sea.GetHeightVelocity (transform.position.x).x - transform.position.y;
 			if (depth < 2.0f) {
-				pressure += 0.2f * Time.deltaTime;
+				pressure += 0.1f * Time.deltaTime;
 			} else {
-				pressure -= 0.1f * Time.deltaTime;
+				pressure -= 0.2f * Time.deltaTime;
 			}
 
 			if (pressure >= 1.0f) {
@@ -194,6 +194,8 @@ public class Kraken : MonoBehaviour {
 		GetComponent<SpriteRenderer>().enabled = false;
 		Instantiate(explosionParticleSystem, transform.position, transform.rotation);
 		dyingSound.Play ();
+		GetComponent<CircleCollider2D> ().enabled = false;
+		GetComponent<Rigidbody2D> ().simulated = false;
 
 		yield return new WaitForSeconds(2.0f);
 		if (playerID == 0) {

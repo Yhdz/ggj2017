@@ -44,7 +44,7 @@ public class BoatSpawner : MonoBehaviour {
 	IEnumerator StartEndSequence()
 	{
 		// TODO: play end sound
-
+		Debug.Log ("Game over by boat count");
 		yield return new WaitForSeconds(3.0f);
 		if (numBoatsAlive0 <= 0) {
 			SceneManager.LoadScene ("EndScreen_Purple");
