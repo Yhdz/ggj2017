@@ -190,6 +190,10 @@ public class Kraken : MonoBehaviour {
 
 	public void AddDamage(float d) {
 		pressure += d;
+		Debug.Log (pressure);
+		if (pressure > 1.0f) {
+			StartCoroutine (StartDeadSequence ());
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
