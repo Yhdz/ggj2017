@@ -40,7 +40,11 @@ public class Kraken : MonoBehaviour {
 	private string AttackButtonName;
 
 	private SpriteRenderer spriteRenderer;
-	private AudioSource audioSource;
+	private AudioSource swimmingSound;
+	private AudioSource dyingSound;
+	private AudioSource beukenSound;
+	private AudioSource[] AllAudio;
+		
 
 	private Sea sea = null;
 
@@ -62,7 +66,11 @@ public class Kraken : MonoBehaviour {
 		sea = FindObjectOfType<Sea> ();
 
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		audioSource = GetComponent<AudioSource> ();
+		AllAudio = GetComponents<AudioSource> ();
+		swimmingSound = AllAudio[0];
+		beukenSound     = AllAudio[1];
+		dyingSound     = AllAudio[2];
+
 		if (playerID == 0) {
 			GetComponent<Rigidbody2D> ().gravityScale = 0.0f;
 			GetComponent<Rigidbody2D> ().freezeRotation = false;
@@ -104,8 +112,8 @@ public class Kraken : MonoBehaviour {
 					spriteRenderer.sprite = swimSpites [1];
 				}
 
-				if (!audioSource.isPlaying) {
-					audioSource.Play ();
+				if (!swimmingSound.isPlaying) {
+					swimmingSound.Play ();
 				}
 			} else if (momentum > 0) {
 				momentum -= Time.deltaTime;
@@ -182,7 +190,18 @@ public class Kraken : MonoBehaviour {
 		SceneManager.LoadScene("EndScreen");
 	}
 
+	public void AddDamage(float d) {
+		pressure += d;
+		Debug.Log (pressure);
+		if (pressure > 1.0f) {
+			StartCoroutine (StartDeadSequence ());
+		}
+	}
+
 	void OnCollisionEnter2D(Collision2D collision) {
+		if (!beukenSound.isPlaying & momentum > 0) {
+			beukenSound.Play ();
+		}
 		//Debug.Log ("Hit!");
 	}
 }
