@@ -89,7 +89,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.27
-  party: 0
+  playerID: 0
+  sprites:
+  - {fileID: 21300000, guid: 2911f294a584a4b1c8ce9c268bfa2245, type: 3}
+  - {fileID: 21300000, guid: 3d29645ed7ae04510872a9f52f2d2361, type: 3}
 --- !u!212 &212072762990519954
 SpriteRenderer:
   m_ObjectHideFlags: 1

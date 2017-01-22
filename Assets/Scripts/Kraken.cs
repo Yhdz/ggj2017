@@ -29,8 +29,12 @@ public class Kraken : MonoBehaviour {
 	private float strokePhase;
 	private float pressure;
 
+	private float strokeTimer;
+	private float noStrokeTimer;
+
 	private string RotAxisName;
 	private string ForwardAxisName;
+	private string SwimButtonName;
 	private string AttackButtonName;
 
 	private SpriteRenderer spriteRenderer;
@@ -50,7 +54,8 @@ public class Kraken : MonoBehaviour {
 		}
 		ForwardAxisName = "Vertical" + playerID;
 		RotAxisName = "Horizontal" + playerID;
-		AttackButtonName = "Jump" + playerID;
+		AttackButtonName = "MakeWaves" + playerID;
+		SwimButtonName = "Swim" + playerID;
 
 		sea = FindObjectOfType<Sea> ();
 
@@ -58,36 +63,61 @@ public class Kraken : MonoBehaviour {
 		audioSource = GetComponent<AudioSource> ();
 	}
 
+	void FixedUpdate()
+	{
+		if (strokeTimer > 0.0f) {
+			float timeScalar = Mathf.Clamp01 (strokeTimer / 0.5f);
+			GetComponent<Rigidbody2D> ().AddForce (transform.up * 2000.0f * timeScalar * Time.fixedDeltaTime);
+		} else if (noStrokeTimer > 0.0f) {
+			float timeScalar = Mathf.Clamp01 (noStrokeTimer / 0.5f);
+			GetComponent<Rigidbody2D> ().AddForce (-transform.up * 1000.0f * timeScalar * Time.fixedDeltaTime);
+		}
+	}
+
 	void Update () {
 		float turn = Input.GetAxis (RotAxisName);
 		transform.Rotate (-turn * rotSpeed * Vector3.forward * Time.deltaTime);
 
-		float swim = Input.GetAxis (ForwardAxisName);
-		Vector2 deltaForward = new Vector2 ();
-		if (swim > 0) {
-			momentum = swim;
-			speed += (maxSpeed - speed) / .1f * Time.deltaTime;
-			deltaForward = momentum * speed * Vector2.up * Time.deltaTime * Mathf.Abs (Mathf.Sin (strokePhase));
-			strokePhase += strokeFrequency * Time.deltaTime;
+//		float swim = Input.GetAxis (ForwardAxisName);
+//		Vector2 deltaForward = new Vector2 ();
+//		if (swim > 0) {
+//			momentum = swim;
+//			speed += (maxSpeed - speed) / .1f * Time.deltaTime;
+//			deltaForward = momentum * speed * Vector2.up * Time.deltaTime * Mathf.Abs (Mathf.Sin (strokePhase));
+//			strokePhase += strokeFrequency * Time.deltaTime;
+//
+//			if (Mathf.Abs (Mathf.Sin (strokePhase)) < .5f) {
+//				spriteRenderer.sprite = swimSpites [0];
+//			} else {
+//				spriteRenderer.sprite = swimSpites [1];
+//			}
+//
+//			if (!audioSource.isPlaying) {
+//				audioSource.Play ();
+//			}
+//		} else if (momentum > 0) {
+//			momentum -= Time.deltaTime;
+//			speed = minSpeed;
+//			deltaForward = momentum * speed * Vector2.up * Time.deltaTime;
+//		}
+//		transform.Translate (deltaForward);
+//
+//		Vector2 sinkingVec = transform.InverseTransformDirection (Vector2.down);
+//		transform.Translate (sinkingSpeed * Time.deltaTime * sinkingVec);
 
-			if (Mathf.Abs (Mathf.Sin (strokePhase)) < .5f) {
-				spriteRenderer.sprite = swimSpites [0];
-			} else {
-				spriteRenderer.sprite = swimSpites [1];
-			}
-
-			if (!audioSource.isPlaying) {
-				audioSource.Play ();
-			}
-		} else if (momentum > 0) {
-			momentum -= Time.deltaTime;
-			speed = minSpeed;
-			deltaForward = momentum * speed * Vector2.up * Time.deltaTime;
+		strokeTimer -= Time.deltaTime;
+		noStrokeTimer -= Time.deltaTime;
+		if (Input.GetButtonDown (SwimButtonName)) {
+			strokeTimer = 0.5f;
+			noStrokeTimer = 0.0f;
+			spriteRenderer.sprite = swimSpites [1];
 		}
-		transform.Translate (deltaForward);
+		if (Input.GetButtonUp (SwimButtonName)) {
+			strokeTimer = 0.0f;
+			noStrokeTimer = 0.2f;
+			spriteRenderer.sprite = swimSpites [0];
+		}
 
-		Vector2 sinkingVec = transform.InverseTransformDirection (Vector2.down);
-		transform.Translate (sinkingSpeed * Time.deltaTime * sinkingVec);
 
 		// Make waves (only when under water)
 		if (sea != null) {
