@@ -135,6 +135,9 @@ public class Kraken : MonoBehaviour {
 				strokeTimer = 0.5f;
 				noStrokeTimer = 0.0f;
 				spriteRenderer.sprite = swimSpites [1];
+				if (!swimmingSound.isPlaying) {
+					swimmingSound.Play ();
+				}
 			}
 			if (Input.GetButtonUp (SwimButtonName)) {
 				strokeTimer = 0.0f;
@@ -190,6 +193,8 @@ public class Kraken : MonoBehaviour {
 	IEnumerator StartDeadSequence() {
 		GetComponent<SpriteRenderer>().enabled = false;
 		Instantiate(explosionParticleSystem, transform.position, transform.rotation);
+		dyingSound.Play ();
+
 		yield return new WaitForSeconds(2.0f);
 		SceneManager.LoadScene("EndScreen");
 	}
