@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -172,20 +173,19 @@ public class Kraken : MonoBehaviour {
 			}
 
 			if (pressure >= 1.0f) {
-				// explode!!
-				Destroy (this.gameObject);
-				Instantiate(explosionParticleSystem, transform.position, transform.rotation);
+				StartCoroutine (StartDeadSequence ());
 			}
 
 			pressure = Mathf.Clamp01 (pressure);
-			Color playerColor = Color.red;
-			if (playerID == 1) {
-				playerColor = Color.blue;
-			}
-				
-			playerPressurePanel.color = Color.Lerp (Color.white, playerColor, pressure);
-
+			playerPressurePanel.rectTransform.SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, pressure * 225.0f);
 		}
+	}
+	
+	IEnumerator StartDeadSequence() {
+		GetComponent<SpriteRenderer>().enabled = false;
+		Instantiate(explosionParticleSystem, transform.position, transform.rotation);
+		yield return new WaitForSeconds(5.0f);
+		SceneManager.LoadScene("EndScreen");
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {

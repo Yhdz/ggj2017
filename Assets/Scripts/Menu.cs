@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 	public GameObject titleScreenPanel;
@@ -36,7 +37,7 @@ public class Menu : MonoBehaviour {
 
 	public void OnStartGame()
 	{
-		Debug.Log ("Implement Start Game");
+		SceneManager.LoadScene ("Game");
 	}
 
 	public void OnCredits()
