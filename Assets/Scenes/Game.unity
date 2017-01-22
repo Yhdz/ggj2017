@@ -819,7 +819,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_LocalPosition.y
@@ -847,7 +847,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
         type: 2}
@@ -881,7 +881,7 @@ Prefab:
       objectReference: {fileID: 1408518638}
     - target: {fileID: 1032008648527774, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_Name
-      value: Kraken Player 2
+      value: Kraken Player 1
       objectReference: {fileID: 0}
     - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
         type: 2}
@@ -1354,7 +1354,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1382,7 +1382,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4724490167836792, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
         type: 2}
@@ -1416,7 +1416,7 @@ Prefab:
       objectReference: {fileID: 138186543}
     - target: {fileID: 1032008648527774, guid: 779a9407803da480a9705fcf462d3caa, type: 2}
       propertyPath: m_Name
-      value: Kraken Player 1
+      value: Kraken Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 114439417783405030, guid: 779a9407803da480a9705fcf462d3caa,
         type: 2}
