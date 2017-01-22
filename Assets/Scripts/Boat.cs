@@ -7,6 +7,8 @@ public class Boat : MonoBehaviour {
 	public int playerID;
 	public Sprite[] sprites;
 
+	public BoatSpawner boatSpawner;
+
 	private Sea sea;
 	private Rigidbody2D rigidBody;
 	private float randomTimeOffset;
@@ -76,6 +78,9 @@ public class Boat : MonoBehaviour {
 			if (transform.position.y < -7.0f) {
 				state = 2;
 			}
+
+			boatSpawner.BoatSunk (playerID);
+
 		} else if (state == 2) {
 			// sunken ship
 		}
