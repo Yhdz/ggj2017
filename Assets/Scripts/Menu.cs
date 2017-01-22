@@ -51,4 +51,9 @@ public class Menu : MonoBehaviour {
 		menuPanel.SetActive (true);
 		creditsPanel.SetActive (false);
 	}
+
+	public void OnExit()
+	{
+		Application.Quit();
+	}
 }

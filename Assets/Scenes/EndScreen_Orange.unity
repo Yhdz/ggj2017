@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayTime: 5
-  sceneName: TitleScreen
+  sceneName: Game
 --- !u!1 &1881413712
 GameObject:
   m_ObjectHideFlags: 0

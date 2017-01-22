@@ -480,12 +480,10 @@ MonoBehaviour:
 
     Ilja Plutschouw
 
-    Douwe Terluin
-
 
     Special thanks to:
 
-    Dineke Dijkhuizen, Stein Plutschouw, Linne Plutschouw, GGJ2017 Groningen'
+    Dineke, Stein, Linne, GGJ2017 Groningen, Hobbel en Annie, Eveline, Charlotte'
 --- !u!222 &568353357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1259,7 +1257,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

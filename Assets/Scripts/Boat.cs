@@ -87,7 +87,7 @@ public class Boat : MonoBehaviour {
 		Impact impact = other.GetComponent<Impact> ();
 		if (impact != null) {
 			float distance = Vector2.Distance (other.transform.position, transform.position) / impact.radius;
-			AddDamage ((1.0f - distance) * 0.5f);
+			AddDamage ((1.0f - distance) * 0.6f);
 		}
 	}
 
