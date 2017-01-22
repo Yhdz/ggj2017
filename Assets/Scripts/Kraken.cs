@@ -93,6 +93,10 @@ public class Kraken : MonoBehaviour {
 	}
 
 	void Update () {
+		if (pressure >= 1.0f) {
+			return;
+		}
+
 		float turn = Input.GetAxis (RotAxisName);
 		transform.Rotate (-turn * rotSpeed * Vector3.forward * Time.deltaTime);
 
