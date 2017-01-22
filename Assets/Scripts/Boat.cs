@@ -78,9 +78,6 @@ public class Boat : MonoBehaviour {
 			if (transform.position.y < -7.0f) {
 				state = 2;
 			}
-
-			boatSpawner.BoatSunk (playerID);
-
 		} else if (state == 2) {
 			// sunken ship
 		}
@@ -96,9 +93,12 @@ public class Boat : MonoBehaviour {
 
 	public void AddDamage(float d)
 	{
-		damage += d;
-		if (damage > 1.0f) {
-			state = 1;
+		if (state == 0) {
+			damage += d;
+			if (damage > 1.0f) {
+				state = 1;
+				boatSpawner.BoatSunk (playerID);
+			}
 		}
 	}
 	
